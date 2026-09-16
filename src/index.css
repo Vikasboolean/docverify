@@ -1,0 +1,357 @@
+/* ==========================================================================
+   DocVerify AI — Design tokens & base styles
+   Palette: cool paper background, deep indigo ink, teal "verified" accent.
+   Display type: Space Grotesk. Body: Inter. Data/IDs: IBM Plex Mono.
+   ========================================================================== */
+
+:root {
+  --color-bg: #f6f7fb;
+  --color-surface: #ffffff;
+  --color-surface-sunken: #eef1f7;
+  --color-border: #dfe3ee;
+  --color-border-strong: #c7cee0;
+
+  --color-ink: #10173a;
+  --color-ink-soft: #4a5178;
+  --color-ink-faint: #848db3;
+
+  --color-primary: #1b3a8c;
+  --color-primary-dark: #12285e;
+  --color-primary-soft: #eaeffc;
+  --color-accent: #0f9d78;
+  --color-accent-soft: #e4f6ef;
+
+  --color-valid: #0f9d78;
+  --color-valid-bg: #e4f6ef;
+  --color-suspicious: #b7791f;
+  --color-suspicious-bg: #fbf1de;
+  --color-invalid: #c0392b;
+  --color-invalid-bg: #fbe8e6;
+  --color-unknown: #4a5178;
+  --color-unknown-bg: #eceef6;
+
+  --font-display: "Space Grotesk", "Inter", sans-serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --shadow-card: 0 1px 2px rgba(16, 23, 58, 0.04), 0 8px 24px -12px rgba(16, 23, 58, 0.12);
+  --shadow-pop: 0 12px 32px -8px rgba(16, 23, 58, 0.22);
+
+  --sidebar-w: 248px;
+  --header-h: 68px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--color-ink);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: var(--radius-sm);
+  padding: 12px 22px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+  white-space: nowrap;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+}
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-primary-dark);
+}
+.btn-outline {
+  background: transparent;
+  border-color: var(--color-border-strong);
+  color: var(--color-ink);
+}
+.btn-outline:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--color-ink-soft);
+}
+.btn-ghost:hover:not(:disabled) {
+  background: var(--color-surface-sunken);
+  color: var(--color-ink);
+}
+.btn-danger-outline {
+  background: transparent;
+  border-color: #f0c4bd;
+  color: var(--color-invalid);
+}
+.btn-danger-outline:hover:not(:disabled) {
+  background: var(--color-invalid-bg);
+}
+.btn-sm {
+  padding: 8px 14px;
+  font-size: 0.85rem;
+}
+.btn-block {
+  width: 100%;
+}
+
+/* ---------- Cards ---------- */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+.card-pad {
+  padding: 28px;
+}
+
+/* ---------- Badges / Status ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+.badge-valid { background: var(--color-valid-bg); color: var(--color-valid); }
+.badge-suspicious { background: var(--color-suspicious-bg); color: var(--color-suspicious); }
+.badge-invalid { background: var(--color-invalid-bg); color: var(--color-invalid); }
+.badge-unknown { background: var(--color-unknown-bg); color: var(--color-unknown); }
+
+/* ---------- Forms ---------- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+.field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+}
+.field input, .field select {
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  padding: 11px 14px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--color-ink);
+  background: #fff;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.field input:focus, .field select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-soft);
+  outline: none;
+}
+.field-error {
+  font-size: 0.8rem;
+  color: var(--color-invalid);
+}
+.field input.has-error {
+  border-color: var(--color-invalid);
+}
+.field-row-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: var(--color-ink-soft);
+}
+
+/* ---------- Layout shell (app pages) ---------- */
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+.app-main {
+  flex: 1;
+  min-width: 0;
+  margin-left: var(--sidebar-w);
+}
+.app-main-inner {
+  padding: 32px 32px 64px;
+  max-width: 1180px;
+}
+@media (max-width: 900px) {
+  .app-main {
+    margin-left: 0;
+  }
+  .app-main-inner {
+    padding: 20px 16px 56px;
+  }
+}
+
+/* ---------- Page header ---------- */
+.page-head {
+  margin-bottom: 28px;
+}
+.page-head h1 {
+  font-size: 1.65rem;
+  margin-bottom: 6px;
+}
+.page-head p {
+  color: var(--color-ink-soft);
+  font-size: 0.98rem;
+}
+.page-head-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Toasts ---------- */
+.toast-stack {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 360px;
+}
+.toast {
+  background: var(--color-ink);
+  color: #fff;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  box-shadow: var(--shadow-pop);
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  animation: toast-in 0.18s ease;
+}
+.toast-success { background: #0c6b50; }
+.toast-error { background: #8c2a20; }
+.toast-info { background: var(--color-primary-dark); }
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Skeletons ---------- */
+.skel {
+  background: linear-gradient(90deg, #eef1f7 25%, #e4e8f2 37%, #eef1f7 63%);
+  background-size: 400% 100%;
+  animation: skel-shine 1.4s ease infinite;
+  border-radius: 8px;
+}
+@keyframes skel-shine {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+/* ---------- Empty state ---------- */
+.empty-state {
+  text-align: center;
+  padding: 56px 24px;
+  color: var(--color-ink-soft);
+}
+.empty-state .empty-icon {
+  width: 52px;
+  height: 52px;
+  margin: 0 auto 16px;
+  color: var(--color-ink-faint);
+}
+.empty-state h3 {
+  color: var(--color-ink);
+  font-size: 1.05rem;
+  margin-bottom: 6px;
+}
+
+/* ---------- Utility ---------- */
+.stack-8 { display: flex; flex-direction: column; gap: 8px; }
+.stack-12 { display: flex; flex-direction: column; gap: 12px; }
+.stack-16 { display: flex; flex-direction: column; gap: 16px; }
+.row-8 { display: flex; align-items: center; gap: 8px; }
+.row-12 { display: flex; align-items: center; gap: 12px; }
+.text-soft { color: var(--color-ink-soft); }
+.text-faint { color: var(--color-ink-faint); }
+.text-sm { font-size: 0.85rem; }
