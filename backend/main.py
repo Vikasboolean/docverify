@@ -38,7 +38,14 @@ SECRET = os.getenv("VERIGATE_SECRET", "development-only-change-me").encode()
 TOKEN_TTL_HOURS = 24
 
 app = FastAPI(title="VeriGate API", version="1.0.0")
-origins = [o.strip() for o in os.getenv("ALLOWED_ORIGINS", "http://localhost:5173").split(",") if o.strip()]
+# Browser Origin headers never include a trailing slash. Normalizing here keeps
+# a harmless trailing slash in a host environment variable from breaking every
+# browser request with a CORS network error.
+origins = [
+    origin.strip().rstrip("/")
+    for origin in os.getenv("ALLOWED_ORIGINS", "http://localhost:5173").split(",")
+    if origin.strip()
+]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
