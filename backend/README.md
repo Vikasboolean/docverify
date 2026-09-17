@@ -35,3 +35,8 @@ Before deployment, copy `.env.example` to `.env`, set a long random `VERIGATE_SE
 - SHA-256 integrity hashes, local audit anchors, and PDF audit reports
 
 The current document screening is only a transparent file-level heuristic: it checks whether a file's binary signature matches its extension and records an integrity hash. It is not OCR, face matching, registry validation, image forensics, blockchain anchoring, or a legal determination of authenticity. Connect approved specialist services in `analyse_document` before using it for consequential decisions.
+
+For start the backend
+you should use command "cd backend" to move on the file.
+then use "python -m uvicorn main:app --reload --port 8000" commend to run the backend 
+
